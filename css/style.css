@@ -1,0 +1,166 @@
+div {
+	border-radius: 5px;
+}
+
+body {
+	z-index: 1;
+	background-color: #fafad2;
+}
+
+table {
+	z-index: 1;
+	background-color: #53bff4;
+}
+
+.page-header {
+	z-index: 1;
+	position: fixed;
+	width: 99%;
+	height: 50px;
+	background-color: #bd4020;
+	margin-bottom: 10px;
+	margin-top: -20px;
+}
+
+#inbox-count {
+	display: inline;
+	float: left;
+	margin-left: 5px;
+	padding-top: 5px;
+	font-size: 16px;
+	font-family: Verdana, sans-serif;
+	color: #ffffff;
+}
+
+
+#email {
+	float:right;
+	margin-right: 5px;
+	padding-top: 5px;
+	font-size: 16px;
+	font-family: Verdana;
+	color: #ffffff;
+}
+
+.instruction {
+	padding-top: 5px;
+	color: #ffffff;
+	margin: auto;
+	font-family: Verdana;
+	border-radius: 3px;
+	width: 700px;
+	height: 20px;
+}
+
+.counter {
+	float: left;
+	display: inline;
+	margin-left: 5px;
+	padding-top: 5px;
+	font-size: 16px;
+	font-family: Verdana, sans-serif;
+	color: #ffffff
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td {
+	border: 2px solid grey;
+}
+
+
+.table-header-box {
+	border: 2px solid grey;
+	font-family: Verdana;
+	color: #2f101a;
+}
+
+.column-header {
+	padding: 5px;
+	color: black;
+	border-left: 2px solid grey;
+	border-right: 2px solid grey;
+	font-family: Verdana;
+}
+
+#date {
+	border: 2px solid grey;
+	width: 15vw;
+	font-family: Verdana;
+	color: #2f101a;
+}
+
+#sender {
+	border: 2px solid grey;
+	width: 30vw;
+	font-family: Verdana;
+	color: #2f101a;
+}
+
+#subject {
+	border: 2px solid grey;
+	width: 55vw;
+	font-family: Verdana;
+	color: #2f101a;
+}
+
+.message-table {
+	border: 6px solid #c6d2c6;
+}
+
+.messages-container {
+	margin-top: 50px;
+	border: 6px solid #ffd000;
+	width: 99%;
+	position: relative;
+	float: left;
+}
+
+/*
+.message-window {
+	z-index: 1;
+	position: fixed;
+	border: 5px solid black;
+	width: 400px;
+	height: 300px;
+	padding: 10px;
+	top: 50%;
+  	left: 50%;
+  	background-color: #fafad2;
+  	margin: -300px;
+}
+*/
+
+.message-window {
+
+	width: 99%;
+	position: relative;
+	margin-top: 50px;
+	border: 5px solid #bd4020;
+	background-color: #fafad2;
+}
+
+.msg-txt-style {
+	clear: both;
+}
+
+.view-msg-btn:hover {
+	background-color: #e6e75e;
+	cursor: hand;
+}
+
+.close-button {
+	float:right;
+	text-align: center;
+	border: 2px solid #ffffff;
+	background-color: #7c3737;
+	margin-top: -120px;
+	margin-left: -75px;
+	padding: 5px;
+	font-size: 16px;
+	font-family: Verdana, sans-serif;
+	color: #ffffff;
+	text-decoration: none;
+}

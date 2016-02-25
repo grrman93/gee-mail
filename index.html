@@ -1,18 +1,114 @@
 <html>
 	<head>
+	<title>Greg's Gee-mail</title>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script>
-      window.onload = function(){
+      window.onload = function() {
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
+        	
+        	//inserts a button to close the div window
+			var addCloseButton = function(div) {
+ 				var closeButton = $('<a>').attr('href', '#');
+				closeButton.text('X');
+				closeButton.addClass('close-button');
+				div.append(closeButton);
+			}
+
+			var counter = 0;
+        	//Function to generate row.
+        	var generateRow = function(email) {
+        		var newRow = $('<tr>');
+       	 		//append row to table
+       	 		$('#m-table tbody').append(newRow);
+       	 		//add date cell
+       	 		newRow.append('<td>' + email.date + '</td>');
+       	 		//add sender cell
+       	 		newRow.append('<td>' + email.sender + '</td>');
+       	 		//add subject cell, which also serves as button to open message
+       	 		var subjectCell = $('<td>').text(email.subject);
+
+       	 		//make message window that will be accessed by clicking subject cell
+       	 		var newDiv = $('<div>').addClass('message-window');
+        		//make body of message
+        		var message = $('<p>').text(email.body);
+        		message.addClass('msg-txt-style');
+        		//add header to message body
+        		var header = $('<h3>').addClass('message-header');
+        		header.text(email.subject);
+        		newDiv.append(header);
+        		newDiv.append(message);
+        		//add close button to message window
+        		addCloseButton(newDiv);
+        		//add message window to subject cell
+       	 		subjectCell.append(newDiv);
+       	 		subjectCell.addClass('view-msg-btn');
+       	 		//finally append subject cell with everything in it to row
+       	 		newRow.append(subjectCell);
+       	 		//make sure message is not showing right off the bat
+       	 		newDiv.hide();
+       	 		//add to total number of messages
+       	 		counter++;
+       	 		$('.counter').text(counter);
+        	}  
+
+        	//Create table with contents of geemails
+        	for(i = 0; i < geemails.length; i++) {	
+        		generateRow(geemails[i]);
+        	}
+        	
+        	//iterator function to add new emails to table
+        	setInterval(function() {
+        		var newMessage = getNewMessage();
+        		generateRow(newMessage);
+        	}, 10000);
+			
+        	//Function allows for open and close message window on click.  Also contains code for close button.
+        	$('body').on('click','.view-msg-btn', function(event){
+        		event.preventDefault();
+        		//make sure all previously openned windows are closed
+        		$('table div').hide();
+        		$(this).children('.message-window').fadeToggle('slow', 'linear');
+        		
+        		//I couldn't manage to get the button to work properly and close the message body :(
+        		
+        		$('.close-button').click(function(event){
+        			event.preventDefault();
+        			$(this).parent().fadeOut('slow', 'linear');
+        		})
+        		
+        	});     	
       };
+
     </script>
 	</head>
 	<body>
 		<div class="container" id="main">
-			Build Me!
+			<div class="page-header">
+				<p id="email">gee-mail</p>
+				<p id="inbox-count">Inbox count:</p>
+				<p class="counter">0</p>
+				<div class="instruction">
+					<p>Click the subject of the email to view the message!</a>
+				</div>
+			</div>
+
+			<div class="messages-container">
+				<table id="m-table" class="message-table">
+					<thead>
+						<tr class="table-header-box">
+							<th id="date" class="column-header">Date</th>
+							<th id="sender" class="column-header">Sender</th>
+							<th id="subject" class="column-header">Subject</th>
+						</tr>
+					</thead>
+					<tbody class="table-body">
+						
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</body>
 </html>
